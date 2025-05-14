@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+// Variables
+$primary-color: #f53e3e;
+$text-color: #333;
+$gray-light: #f5f5f5;
+$gray-medium: #ddd;
+$gray-dark: #777;
+$blue-link: #4285f4;
+$white: #fff;
+
+// Main container
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+// Company title
+.company-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+// Contact wrapper (flexible container)
+.contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+// Contact information section
+.contact-info {
+    width: 100%;
+
+    @media (min-width: 768px) {
+        width: 33%;
+    }
+}
+
+.contact-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    strong {
+        font-weight: 700;
+    }
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    color: $text-color;
+}
+
+.contact-link {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Map container and components
+.map-container {
+    width: 100%;
+    position: relative;
+
+    @media (min-width: 768px) {
+        width: 67%;
+    }
+}
+
+.map-frame {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 2px solid $gray-medium;
+    height: 350px;
+    transition: height 0.3s ease;
+
+    &.expanded {
+        height: 384px;
+    }
+}
+
+.map-content {
+    width: 100%;
+    height: 100%;
+    background-color: $gray-light;
+    position: relative;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pin-marker {
+    width: 2rem;
+    height: 2rem;
+    background-color: $primary-color;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-icon {
+    color: $white;
+}
+
+.map-address {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: $white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    max-width: 280px;
+}
+
+.address-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.address-subtitle {
+    font-size: 0.75rem;
+    color: $gray-dark;
+}
+
+.map-toggle-btn {
+    color: $blue-link;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.map-controls {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: $white;
+    border-radius: 0.125rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $gray-medium;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $gray-light;
+    }
+}
+
+.map-attribution {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.logo-text {
+    font-size: 0.75rem;
+    color: $gray-dark;
+}
+
+.map-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: $gray-dark;
+    margin-top: 0.25rem;
+    padding: 0 0.25rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-link {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
