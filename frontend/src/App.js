@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from './context/auth-context';
+import { decodeToken, checkExpireToken, getCookieValue } from './utils/token';
+
 
 import MainLayout from './layout/MainLayout';
 import HomeLayout from "./layout/HomeLayout";
@@ -11,17 +13,6 @@ import HomePage from "./pages/HomePage";
 import WebcamPage from "./pages/WebcamPage";
 import ContactPage from "./pages/ContactPage";
 import UploadImagePage from "./pages/UploadImagePage";
-
-const getCookieValue = (name) => {
-  const cookies = document.cookie.split(';');
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    if (cookie.startsWith(name + '=')) {
-      return cookie.substring(name.length + 1);
-    }
-  }
-  return null;
-};
 
 const setCookie = (name, value, days) => {
   const date = new Date();
@@ -36,23 +27,41 @@ const removeCookie = (name) => {
 
 const App = () => {
   const [authState, setAuthState] = useState(() => {
-    const stored = getCookieValue("isLoggedIn");
+    const stored = sessionStorage.getItem("authState");
+    const parsed = stored ? JSON.parse(stored) : null;
+
     return {
-      isLoggedIn: stored === "true" ? true : false,
+      isLoggedIn: parsed?.isLoggedIn || false,
+      refreshToken: parsed?.refreshToken || null,
     };
   });
 
-  // Hàm đăng nhập - đặt cookie với thời hạn 7 ngày
-  const login = useCallback(() => {
-    setCookie("isLoggedIn", "true", 7); // Lưu cookie trong 7 ngày
-    setAuthState({ isLoggedIn: true });
+
+  const login = useCallback((accessToken, refreshToken) => {
+    setCookie("accessToken", accessToken);
+    setAuthState({ isLoggedIn: true, refreshToken });
+    console.log(refreshToken);
+    console.log(accessToken);
+    sessionStorage.setItem('authState', JSON.stringify({ refreshToken, isLoggedIn: true }));
   }, []);
 
-  // Hàm đăng xuất - xóa cookie
+
   const logout = useCallback(() => {
-    removeCookie("isLoggedIn");
-    setAuthState({ isLoggedIn: false });
+    removeCookie("accessToken");
+    setAuthState({ isLoggedIn: false, refreshToken: null });
+    sessionStorage.removeItem('authState')
   }, []);
+
+  useEffect(() => {
+    const accessToken = getCookieValue("accessToken");
+    if (accessToken) {
+      const { exp } = decodeToken(accessToken);
+      console.log(checkExpireToken(exp));
+      if (!checkExpireToken(exp)) {
+        logout();
+      }
+    }
+  }, [logout]);
 
   let routes;
   if (authState.isLoggedIn) {
@@ -61,7 +70,7 @@ const App = () => {
         <Route path="/hitek-solution" element={<HomeLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="application" element={< ApplicationLayout />} >
-            <Route path='webcam' element={<WebcamPage />} />
+            <Route path='live-detection' element={<WebcamPage />} />
             <Route path='upload-image' element={<UploadImagePage />} />
           </Route>
           <Route path="contact" element={<ContactPage />} />

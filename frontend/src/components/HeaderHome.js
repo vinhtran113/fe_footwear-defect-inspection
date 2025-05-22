@@ -7,9 +7,10 @@ import header_background from "../assets/header_background.jpg";
 import { AuthContext } from '../context/auth-context';
 
 const title = [
-  { label: 'home', value: 'HitekAI', subtile: 'PHẦN MỀM PHÁT HIỆN LỖI THÔNG MINH TRONG DÂY CHUYỀN SẢN XUẤT GIÀY DÉP' },
-  { label: 'application', value: 'ỨNG DỤNG PHÁT HIỆN LỖI', sutile: '' },
-  { label: 'contact', value: 'LIÊN HỆ VỚI CHÚNG TÔI', sutile: '' },
+  { label: 'home', value: 'HitekAI', subtile: 'INTELLIGENT DEFECT DETECTION SOFTWARE FOR FOOTWEAR PRODUCTION LINES' },
+  { label: 'application', value: 'DEFECT DETECTION APPLICATION', subtile: '' },
+  { label: 'contact', value: 'CONTACT US', subtile: '' }
+
 ]
 const HeaderHome = () => {
   const auth = useContext(AuthContext);
@@ -45,22 +46,22 @@ const HeaderHome = () => {
           <div className="logo__quote">
             <img src={logo} alt="Logo" />
           </div>
-          <div className="logo__text">Hitek Solution</div>
+          <div className="logo__text">HITEK SOLUTION <sup>®</sup></div>
         </div>
 
         {/* Desktop Navigation */}
         <div className="nav-menu">
           <div
             className={`nav-menu__item ${currentPath === "application" ? "active" : ""}`}
-            onClick={() => handleLoadLink("application")}
+            onClick={() => handleLoadLink("application/live-detection")}
           >
-            Ứng dụng
+            Application
           </div>
           <div
             className={`nav-menu__item ${currentPath === "contact" ? "active" : ""}`}
             onClick={() => handleLoadLink("contact")}
           >
-            Liên hệ
+            Contact
           </div>
           <div className="nav-menu__logout"
             onClick={() => handleLogout()}>

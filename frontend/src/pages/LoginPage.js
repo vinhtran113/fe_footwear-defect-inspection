@@ -32,7 +32,7 @@ const LoginPage = () => {
       }
 
       // Login success
-      auth.login();
+      auth.login(response.data.access, response.data.refresh);
       setIsLoading(false);
       navigate("/hitek-solution/home");
 

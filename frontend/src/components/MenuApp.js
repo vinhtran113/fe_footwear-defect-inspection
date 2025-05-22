@@ -6,9 +6,9 @@ import { Webcam, ImagePlus, FileClock } from "lucide-react";
 
 
 const menuItems = [
-    { path: "/hitek-solution/application/webcam", label: " Sử dụng webcam", icon: <Webcam /> },
-    { path: "/hitek-solution/application/upload-image", label: "Tải lên hình ảnh", icon: <ImagePlus /> },
-    { path: "/hitek-solution/application/history", label: "Lịch sử ảnh", icon: <FileClock /> },
+    { path: "/hitek-solution/application/live-detection", label: " Live detection", icon: <Webcam /> },
+    { path: "/hitek-solution/application/upload-image", label: "Upload image", icon: <ImagePlus /> },
+    { path: "/hitek-solution/application/history", label: "History", icon: <FileClock /> },
 ];
 const MenuApp = () => {
     const navigate = useNavigate();
