@@ -11,28 +11,12 @@ Mở Command Prompt:
   
         cd frontend
 
-3. Tạo và kích hoạt môi trường ảo
+2. Install library in reactjs project 
 
-    Tạo môi trường ảo (Windows)
-  
-        python -m venv env
-  
-    Kích hoạt môi trường ảo
-  
-        env\Scripts\activate
+        npm install
 
-3. Cài đặt các thư viện cần thiết
+3. Start the project 
 
-       pip install -r requirements.txt
+        npm start 
 
-5. Chạy migrate database
-
-       python manage.py makemigrations
-  
-       python manage.py migrate
-
-7. Chạy server
-
-       python manage.py runserver
-
-  Truy cập tại: http://127.0.0.1:8000/
+  Truy cập tại: http://127.0.0.1:3000/login
