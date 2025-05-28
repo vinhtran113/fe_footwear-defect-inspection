@@ -49,8 +49,7 @@ const LoginPage = () => {
           <div className="login-container">
             <div className="login-form">
               <div className="form-header">
-                <h1>Chào mừng trở lại!</h1>
-                <p>Đăng nhập để trải nghiệm dịch vụ</p>
+                <h1>Welcome back!</h1>
               </div>
               {error && <div className="error-message">{error}</div>}
               <form onSubmit={handleLogin}>
@@ -65,10 +64,10 @@ const LoginPage = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Mật khẩu <span className="required">(*)</span></label>
+                  <label>Password <span className="required">(*)</span></label>
                   <input
                     type="password"
-                    placeholder="Nhập mật khẩu của bạn"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -77,7 +76,7 @@ const LoginPage = () => {
 
                 <div className="btn-container">
                   <button type="submit" className="btn btn-login">
-                    Đăng nhập
+                    Login
                   </button>
                 </div>
 

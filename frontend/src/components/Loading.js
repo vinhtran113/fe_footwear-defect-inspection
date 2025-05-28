@@ -11,7 +11,7 @@ const Loading = () => {
                     <div className="spinner-circle"></div>
                     <div className="spinner-circle"></div>
                 </div>
-                <div className="loading-text">Đang xử lý...</div>
+                <div className="loading-text">Loading...</div>
             </div>
         </div>
     );
