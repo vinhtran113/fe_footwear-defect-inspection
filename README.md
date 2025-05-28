@@ -1,7 +1,15 @@
 # footwear-defect-inspection
 Detects common footwear defects like stitching and knitting errors
-Hướng dẫn cài đặt
-Mở Command Prompt:
+
+Requirement: 
+
+Install Node.js: 
+
+        https://nodejs.org/
+
+Installation instructions
+
+Open Command Prompt:
 
 1. Clone repository
 
