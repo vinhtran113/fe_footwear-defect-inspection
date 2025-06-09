@@ -47,16 +47,16 @@ function ConnectCamera() {
       if (!blob) return;
 
       const formData = new FormData();
-      formData.append("image", blob, "frame.jpg");
+      formData.append("file", blob, "frame.jpg");
 
       try {
-        const response = await fetch("http://localhost:8000/api/realtime/", {
+        const response = await fetch("http://localhost:5000/predict", {
           method: "POST",
           body: formData,
         });
         const result = await response.json();
-        if (result.result_image) {
-          setResultImage(result.result_image);
+        if (result.image_base64) {
+          setResultImage(`data:image/png;base64,${result.image_base64}`);
         }
       } catch (error) {
         console.error("Lỗi gửi frame:", error);

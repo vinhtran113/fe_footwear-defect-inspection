@@ -97,24 +97,25 @@ export default function ImageUploader() {
         try {
             setUploading(true);
             const formData = new FormData();
-            formData.append('image', selectedFile); // Sử dụng file object thay vì URL
+            formData.append('file', selectedFile);
 
-            const response = await axios.post('http://localhost:8000/api/upload/', formData, {
+            const response = await fetch("http://localhost:5000/predict", {
+                method: "POST",
+                body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${getCookieValue('accessToken')}`,
                 }
             });
+            const result = await response.json();
+            console.log('Upload successful:', result);
 
-            console.log('Upload successful:', response.data);
-            setDetectionResults(response.data.detection_results || []);
+            setDetectionResults(result.detections || []);
             setUploadSuccess(true);
-
             setAlert({
                 open: true,
                 message: 'Image uploaded successfully!',
                 severity: 'success'
-            });
+        });
             // Có thể reset form sau khi upload thành công
             // removeImage();
 
