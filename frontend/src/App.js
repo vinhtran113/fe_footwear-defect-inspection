@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { AuthContext } from './context/auth-context';
 import { decodeToken, checkExpireToken, getCookieValue } from './utils/token';
 
-
 import MainLayout from './layout/MainLayout';
 import HomeLayout from "./layout/HomeLayout";
 import ApplicationLayout from "./layout/ApplicationLayout";
@@ -13,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import WebcamPage from "./pages/WebcamPage";
 import ContactPage from "./pages/ContactPage";
 import UploadImagePage from "./pages/UploadImagePage";
+import UploadVideoPage from "./pages/UploadVideoPage";
 
 const setCookie = (name, value, days) => {
   const date = new Date();
@@ -72,6 +72,7 @@ const App = () => {
           <Route path="application" element={< ApplicationLayout />} >
             <Route path='live-detection' element={<WebcamPage />} />
             <Route path='upload-image' element={<UploadImagePage />} />
+            <Route path='upload-video' element={<UploadVideoPage />} />
           </Route>
           <Route path="contact" element={<ContactPage />} />
         </Route>

@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./styles/MenuApp.scss"; // Import SCSS
 
-import { Webcam, ImagePlus, FileClock } from "lucide-react";
+import { Webcam, ImagePlus, FileVideo2 } from "lucide-react";
 
 
 const menuItems = [
     { path: "/hitek-solution/application/live-detection", label: " Live detection", icon: <Webcam /> },
     { path: "/hitek-solution/application/upload-image", label: "Upload image", icon: <ImagePlus /> },
-    { path: "/hitek-solution/application/history", label: "History", icon: <FileClock /> },
+    { path: "/hitek-solution/application/upload-video", label: "Upload video", icon: <FileVideo2 /> },
 ];
 const MenuApp = () => {
     const navigate = useNavigate();

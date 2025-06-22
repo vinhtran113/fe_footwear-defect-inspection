@@ -8,7 +8,7 @@ const WebcamPage = () => {
     return (
         <div className="camera-settings">
             <div className="camera-header">
-                <h1 className="title">Camera</h1>
+                <h1 className="title">Live detection</h1>
             </div>
             <div className="camera-content">
                 <ConnectCamera />
